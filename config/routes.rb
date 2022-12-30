@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, defaults: { format: :json },  controllers: {
-        sessions: 'users/sessions',
-        registrations: 'users/registrations'  
-      }
-  resources :users
+  devise_for :buyers, defaults: { format: :json }   
+  devise_for :shop_owners, defaults: { format: :json }   
+  devise_for :cashiers, defaults: { format: :json }   
+  devise_for :admins, defaults: { format: :json }   
+  # devise_for :users, defaults: { format: :json },  controllers: {
+  #       sessions: 'users/sessions',
+  #       registrations: 'users/registrations'  
+  #     }
   resources :invoices
   resources :orders
   resources :shops

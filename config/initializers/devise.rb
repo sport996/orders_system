@@ -8,29 +8,70 @@
 #
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
-
-
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '6ca102f248964292471c514519b40f37d496314ee799f00183694ec298c52c5de3673e2e9a00f1d107f2148d48cedc8c76c2d6de51dfbc6b24134a8e325d9237'
+  # config.secret_key = '60ff03d2aad3aa353201362e74b1a45abb50fcd775f961c1a24f8dc445e0ebb30a572845a9ddedbd24e93a95452084b0b9a46191897e53c90a7a02499b571eea'
   config.jwt do |jwt|
    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
    jwt.dispatch_requests = [
-     ['POST', %r{users/sign_in}]
+     ['POST', %r{admins/sign_in}]
    ]
    jwt.revocation_requests = [
-     ['DELETE', %r{users/sign_out}]
+     ['DELETE', %r{admins/sign_out}]
    ]
    jwt.expiration_time = 15.day.to_i
  
    jwt.request_formats = {
-     user: [:json]
+     admin: [:json]
    }
- end
+  end
+
+    config.jwt do |jwt|
+   jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+   jwt.dispatch_requests = [
+     ['POST', %r{cashiers/sign_in}]
+   ]
+   jwt.revocation_requests = [
+     ['DELETE', %r{cashiers/sign_out}]
+   ]
+   jwt.expiration_time = 15.day.to_i
+ 
+   jwt.request_formats = {
+     cashier: [:json]
+   }
+  end
+    config.jwt do |jwt|
+   jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+   jwt.dispatch_requests = [
+     ['POST', %r{shop_owners/sign_in}]
+   ]
+   jwt.revocation_requests = [
+     ['DELETE', %r{shop_owners/sign_out}]
+   ]
+   jwt.expiration_time = 15.day.to_i
+ 
+   jwt.request_formats = {
+     shop_owner: [:json]
+   }
+  end  
+  config.jwt do |jwt|
+   jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+   jwt.dispatch_requests = [
+     ['POST', %r{buyers/sign_in}]
+   ]
+   jwt.revocation_requests = [
+     ['DELETE', %r{buyers/sign_out}]
+   ]
+   jwt.expiration_time = 15.day.to_i
+ 
+   jwt.request_formats = {
+     buyer: [:json]
+   }
+  end
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -141,7 +182,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'e1e7e44c6eaa133c209d76725c4235c7d4c280c0d963eeab677af0a3a035da935324c51a9199d761f25ec6bd75458676d7b8c951486e13a3805ec66e3390e894'
+  # config.pepper = '0f146ae065d4f86b1077704dfe3c31c03e029fbdc589b58522ceb0b7a15a27db3bf49274c72bf346f84820849701f463338474d677fe395977557ee6b54f5b39'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
