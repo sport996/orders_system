@@ -1,24 +1,54 @@
-# README
+Steps:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Verify created tables and foreign keys and add missing
+An entity can have (one or many) other entity
 
-Things you may want to cover:
+Shop one to many Item √
+Create foreign key in item for shop
 
-* Ruby version
+Shop one to many Order √
+Create foreign key in order for shop
 
-* System dependencies
+Shop one to many invoice √
+Create foreign key in invoice for shop
 
-* Configuration
+Invoice one to many order √
+Create foreign key in order for invoice
 
-* Database creation
+Item many to many Order √
+Create table Items_Orders(containing foreign keys and quantity)
 
-* Database initialization
+- research device and jet and create users table auth √
+https://www.thespian.hr/blog/devise-authentication-for-the-rails-7-api-application
 
-* How to run the test suite
+- Look into user relations if there was recurring with shop √
 
-* Services (job queues, cache servers, search engines, etc.)
+devise_jwt_secret:
+ef6413fb139654e243cd2813946015086c529586f1f298f2219eb2a1bfb60ae868fd968cce3bc388a2ed52accfcb2297f26fa1d0da26372c7da44a1c29192937
 
-* Deployment instructions
+Shop one to many Cashier √
+Create foreign key in user for shop
 
-* ...
+Shop owner one to many Shop √
+Create foreign key in shop for Shop
+
+
+Cashier one to many  orders √
+Create foreign key in order for Cashier
+
+
+- Add association in rails models √
+
+- Insert an admin user 
+
+- Coding the endpoints as mentioned in System Flow. 
+
+- Use Rest Client for API calls
+https://betterprogramming.pub/making-api-calls-in-your-rails-app-try-these-http-clients-47b90ebca70
+
+- Crono job rails gem
+https://github.com/plashchynski/crono/blob/main/README.md
+
+
+——————————————————————————————————
+
