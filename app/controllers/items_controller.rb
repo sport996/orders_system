@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   # POST /items
   def create
     @item = Item.new(item_params)
-
+    @item.shop_id = shop_owner.sh
     if @item.save
       render json: @item, status: :created, location: @item
     else
@@ -46,6 +46,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :description, :price)
+      params.require(:item).permit(:name, :description, :price, :shop_id)
     end
 end
