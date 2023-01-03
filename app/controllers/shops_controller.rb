@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: %i[ show update destroy ]
+  before_action :authenticate_admin
 
   # GET /shops
   def index
@@ -48,4 +49,5 @@ class ShopsController < ApplicationController
     def shop_params
       params.require(:shop).permit(:name, :category, :location)
     end
+
 end
