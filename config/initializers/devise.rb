@@ -16,7 +16,7 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '60ff03d2aad3aa353201362e74b1a45abb50fcd775f961c1a24f8dc445e0ebb30a572845a9ddedbd24e93a95452084b0b9a46191897e53c90a7a02499b571eea'
   config.jwt do |jwt|
-   jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+   jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
    jwt.dispatch_requests = [
      ['POST', %r{admins/sign_in}]
    ]
@@ -31,7 +31,7 @@ Devise.setup do |config|
   end
 
     config.jwt do |jwt|
-   jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+   jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
    jwt.dispatch_requests = [
      ['POST', %r{cashiers/sign_in}]
    ]
@@ -45,7 +45,7 @@ Devise.setup do |config|
    }
   end
     config.jwt do |jwt|
-   jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+   jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
    jwt.dispatch_requests = [
      ['POST', %r{shop_owners/sign_in}]
    ]
@@ -59,7 +59,7 @@ Devise.setup do |config|
    }
   end  
   config.jwt do |jwt|
-   jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+   jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
    jwt.dispatch_requests = [
      ['POST', %r{buyers/sign_in}]
    ]
