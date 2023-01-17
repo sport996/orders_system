@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :shop_owners
   resources :buyers
   resources :cashiers
-  resources :invoices
+  resources :invoices, :except => [:create] 
   resources :orders
   resources :shops
   resources :items
